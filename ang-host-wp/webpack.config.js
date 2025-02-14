@@ -6,6 +6,7 @@ module.exports = withModuleFederationPlugin({
 
   remotes: {
     './Home': 'http://localhost:3000/_next/static/chunks/remoteEntry.js',
+    './Component': 'http://localhost:4202/remoteEntry.js',
   },
 
   shared: {

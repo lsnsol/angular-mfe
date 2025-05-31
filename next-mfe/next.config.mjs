@@ -1,6 +1,6 @@
 import NextFederationPlugin from "@module-federation/nextjs-mf";
 const federatedConfig = {
-  name: "nextmnh",
+  name: "remote",
   filename: "static/chunks/remoteEntry.js",
   exposes: {
     "./Home": "./src/pages/bootstrap.tsx",

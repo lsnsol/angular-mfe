@@ -19,7 +19,7 @@ export const routes: Routes = [
     component: WebComponentWrapper,
     data: {
       remoteEntry: 'http://localhost:3000/_next/static/chunks/remoteEntry.js',
-      remoteName: 'nextmnh',
+      remoteName: 'remote',
       exposedModule: './Home',
       elementName: 'http-mfe-react-element',
     } as WebComponentWrapperOptions,

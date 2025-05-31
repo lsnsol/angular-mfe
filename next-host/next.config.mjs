@@ -1,25 +1,26 @@
 import NextFederationPlugin from "@module-federation/nextjs-mf";
-const federatedConfig = {
-  name: 'host',
-  filename: 'remoteEntry.js',
-  remotes: {
-    remote: `remote@http://localhost:3001/remoteEntry.js`, // Adjust URL as needed
-  },
-  shared: {}, // Define shared dependencies if needed
-  extraOptions: {
-    exposePages: true,
-  }
-};
+const remotes = () => {
+  return {
+    // specify remotes
+    remote: `remote@http://localhost:3001/_next/static/chunks/remoteEntry.js`,
+    // remote2: `remote2@http://localhost:3002/_next/static/chunks/remoteEntry.js`,
+  };
+}
+
 const nextConfig = {
   reactStrictMode: true,
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   webpack(config) {
     config.plugins.push(
-      new NextFederationPlugin(federatedConfig)
+      new NextFederationPlugin({
+        name: 'host',
+        filename: 'static/chunks/remoteEntry.js',
+        remotes: remotes(),
+        exposes: {
+          // Host app also can expose modules
+        }
+      })
     );
     return config;
   },
-};
+}
 export default nextConfig;
